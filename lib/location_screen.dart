@@ -1,20 +1,19 @@
-// TODO Implement this library.
 import 'dart:developer';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:weather_app/networking.dart';
 
-class locationscreen extends StatefulWidget {
-  const locationscreen({super.key});
+// ignore: camel_case_types
+class LocationScreen extends StatefulWidget {
+  const LocationScreen({super.key});
 
   @override
-  State<locationscreen> createState() => locationscreenState();
+  State<LocationScreen> createState() => LocationScreenState();
 }
 
 // ignore: camel_case_types
-class locationscreenState extends State<locationscreen> {
-  NetworkHelper network_helper = NetworkHelper();
+class LocationScreenState extends State<LocationScreen> {
+  NetworkHelper networkHelper = NetworkHelper();
   String location = 'karachi';
 
   @override
@@ -32,7 +31,7 @@ class locationscreenState extends State<locationscreen> {
             ),
           ),
           child: FutureBuilder(
-              future: network_helper.getData(location),
+              future: networkHelper.getData(location),
               builder: (context, AsyncSnapshot asyncSnapshot) {
                 if (!asyncSnapshot.hasData) {
                   return const CircularProgressIndicator();
@@ -64,7 +63,7 @@ class locationscreenState extends State<locationscreen> {
                                           onPressed: () {
                                             setState(() {});
                                           },
-                                          child: const Text('child'))
+                                          child: const Text('Ok'))
                                     ],
                                   );
                                 });
@@ -95,7 +94,7 @@ class locationscreenState extends State<locationscreen> {
                       ),
                       SizedBox(height: MediaQuery.sizeOf(context).height / 2),
                       Text(
-                        ((temperature) + "℃"),
+                        ("$temperature ℃"),
                         style: const TextStyle(
                             color: Colors.white,
                             fontSize: 80,
@@ -199,7 +198,7 @@ class locationscreenState extends State<locationscreen> {
 }
 
 class BottomInfo extends StatelessWidget {
-  BottomInfo({
+  const BottomInfo({
     super.key,
     required this.title,
     required this.temp,
@@ -209,7 +208,7 @@ class BottomInfo extends StatelessWidget {
   });
   final String title;
   final String temp;
-  Color? color;
+  final Color? color;
   final String unit;
   final double width;
 

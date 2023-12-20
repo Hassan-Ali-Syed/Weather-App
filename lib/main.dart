@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/networking.dart';
 
-import 'package:weather_app/locationscreen.dart';
+import 'package:weather_app/location_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,6 +27,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: locationscreen());
+        debugShowCheckedModeBanner: false, home: LocationScreen());
   }
 }
